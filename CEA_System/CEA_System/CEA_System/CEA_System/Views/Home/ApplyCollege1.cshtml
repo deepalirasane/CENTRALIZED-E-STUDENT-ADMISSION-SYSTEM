@@ -1,0 +1,91 @@
+﻿@model IEnumerable<CEA_System.Models.SchoolData>
+@using CEA_System.Models;
+
+
+@{
+    ViewBag.Title = "ApplyCollege";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+    var schoolnames = Session["SchoolData"] as List<SchoolData>;
+}
+
+ <h2>Apply To College</h2>
+<br />
+<br />
+<br />
+<br />
+<u>
+<p><b> Please fill below Application Form </b> </p>
+    </u>
+<br />
+<br />
+<br />
+<br />
+
+@using (Html.BeginForm()) { 
+
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>School Name</label>
+        <input type="text" maxlength="50" class="form-control" name="SchoolName" style="height:25px;font-size:18px;" placeholder="Enter the School Name you wish to apply for" id="SchoolName"
+                                     required data-validation-required-message="Please enter your school name." >
+                                <p class="help-block text-danger"></p>
+       <label style="font-size:18px;">  </label>
+<select style="color:blue;" multiple  name="schoolname" id="schoolname">
+    
+    @foreach (var item in schoolnames)
+    {
+       
+       <option value="@item.SchoolId">@item.SchoolName</option>
+ 
+
+    }
+    <br />
+    <br />
+   </select>
+
+        </div>
+                        </div>
+    
+    
+    <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>School Semester</label>
+                                <input type="text" maxlength="50" class="form-control" name="SchoolSemester" style="height:25px;font-size:18px;" placeholder="Enter the Semester" id="SchoolSemester"
+                                     required data-validation-required-message="Please enter the semester." >
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+    
+     <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>School Course</label>
+                                <input type="text" maxlength="50" class="form-control" name="SchoolCourse" style="height:25px;font-size:18px;" placeholder="Enter the required course" id="SchoolCourse"
+                                     required data-validation-required-message="Please enter the course applied." >
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+    
+    <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" name="email" style="height:25px;font-size:18px;" placeholder="Please enter school Email Address" id="schoolemail"  required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+    
+    
+    <br />
+    <br />
+    <br />
+    <br />
+    <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                               <center>
+                                     <button id="schoolapplicationbtn" type="submit"  onclick="" class="btn btn-primary btn-medium">Submit Application</button>
+                                </center>
+                               
+                            </div>
+                        </div>
+
+}
